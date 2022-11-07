@@ -1,0 +1,118 @@
+/* font-family: 'Amatic SC', cursive; */
+/* font-family: 'Caveat', cursive; */
+/* font-family: 'Monda', sans-serif; */
+/* font-family: 'Orbitron', sans-serif; */
+/* font-family: 'Ubuntu Mono', monospace; */
+.material-icons.md-18 { font-size: 18px; }
+.material-icons.md-24 { font-size: 24px; }
+.material-icons.md-36 { font-size: 36px; }
+.material-icons.md-48 { font-size: 48px; }
+.material-icons.md-light { color: rgba(255, 255, 255, 1); }
+.material-icons.md-light.md-inactive { color: rgba(255, 255, 255, 0.3); }
+
+body {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+  background-image: url('../images/backgrounds/portal_to_the_depths.jpeg');
+  background-size: cover;
+  font-family: 'Nunito Sans';
+  color: #000;
+  font-size: 1.35em;
+}
+#master {
+}
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Lato', sans-serif;
+  font-weight: 600;
+}
+h2 {
+  font-size: 1.5em;
+}
+.site_inline_title {
+  font-family: 'Lato', sans-serif;
+}
+.title_big {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 2em;
+  font-size: 2.2em;
+}
+.inline_icon {
+  padding: 0em .3em 0em;
+  font-size: .5em !important;
+}
+.sub {
+  color: #FE6152
+}
+.mono {
+  font-family: 'Ubuntu Mono', mono;
+}
+.logo {
+  height: 16em;
+  padding: 1.5em;
+  will-change: filter;
+}
+.logo:hover {
+  filter: drop-shadow(0 0 2em #646cffaa);
+}
+.logo.react:hover {
+  filter: drop-shadow(0 0 2em #61dafbaa);
+}
+@media (prefers-reduced-motion: no-preference) {
+  a:nth-of-type(2) .logo {
+    animation: logo-spin infinite 20s linear;
+  }
+}
+
+.card {
+  padding: 0em;
+  background-color: #28353BDE;
+  margin: 0em 5%;
+  border: 1px solid #000;
+  border-radius: 10px;
+  box-shadow: #00000069 1px 2px;
+  display: grid;
+  grid-template-areas:
+    "card-header"
+    "card-content"
+}
+.card_menu_bar_root {
+  grid-area: card-header;
+  border-bottom: 1px solid #000;
+  display: flex;
+  flex-direction: row;
+  justify-content: left;
+  box-shadow: #00000040 1px 1px;
+}
+.card_menu_title {
+  flex: auto;
+  margin: auto;
+  color:  #FE6152;
+  font-weight: 600;
+  text-shadow: #000 1px 1px;
+}
+.card_menu_control_applet {
+  display: flex;
+  width: max-content;
+}
+.card_menu_control_applet > .button {
+  cursor: pointer;
+}
+.card_content {
+  grid-area: card-content;
+  padding: 5px;
+}
+.card_content_header {
+
+}
+.read-the-docs {
+  color: #888;
+}
+h4.card_content {
+  text-transform: full-width;
+  font-family: 'Ubuntu Mono', mono;
+  font-variant: petite-caps;
+  text-decoration: underline;
+  margin: 0px;
+}

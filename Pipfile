@@ -5,6 +5,7 @@ name = "pypi"
 
 [packages]
 flask = "*"
+pre-commit = "*"
 
 [dev-packages]
 

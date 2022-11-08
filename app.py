@@ -37,8 +37,10 @@ def api_entrypoint():
             breakpoint()
             if api_key in api_keys:
                 try:
+                    # Has an endpoint been requested?
                     _data["endpoint"]
                 except KeyError:
-                    return f"API_KEY: {escape(api_key)}"
+                    # If no endpoint has been requested return api key verification
+                    return f"key: {escape(api_key)} Verified"
         except KeyError:
             return "<p><h2>Error No Key Provided With Your Request</h2></p>"

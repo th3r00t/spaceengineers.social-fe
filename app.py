@@ -1,3 +1,4 @@
+"""Server for spaceengineers.social."""
 import json
 
 from flask import Flask, render_template, request
@@ -16,22 +17,26 @@ app.wsgi_app = ProxyFix(app.wsgi_app)
 
 
 def get_data(req):
+    """Get data from json object."""
     return json.loads(req)
 
 
 @app.route("/")
 def index():
+    """Render the main web based layout."""
     return render_template("index.html")
 
 
 @app.route("/path/<path:subpath>")
 def show_subpath(subpath):
+    """Test object for relaying path:subpath objects."""
     return f"Subpath {escape(subpath)}"
 
 
 # @app.route('/api/post/<path:route>', methods=['GET', 'POST'])
 @app.route("/api/post/", methods=["GET", "POST"])
 def api_entrypoint():
+    """Actual api entrypoint."""
     if request.method == "POST":
         try:
             _data = get_data(request.data)

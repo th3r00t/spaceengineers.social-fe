@@ -9,6 +9,7 @@ pre-commit = "*"
 requests = "*"
 pymongo = "*"
 python-dotenv = "*"
+pudb = "*"
 
 [dev-packages]
 

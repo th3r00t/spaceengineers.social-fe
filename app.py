@@ -3,6 +3,7 @@ import json
 from flask import Flask, render_template, request
 from markupsafe import escape
 from werkzeug.middleware.proxy_fix import ProxyFix
+from include.sesapi import SESApi
 
 app = Flask(__name__)
 api_keys = ["000111000111"]
@@ -34,13 +35,15 @@ def api_entrypoint():
         try:
             _data = get_data(request.data)
             api_key = _data["api_key"]
-            breakpoint()
             if api_key in api_keys:
                 try:
                     # Has an endpoint been requested?
-                    _data["endpoint"]
-                except KeyError:
-                    # If no endpoint has been requested return api key verification
-                    return f"key: {escape(api_key)} Verified"
+                    _ep = _data["endpoint"]
+                    _args = _data["args"]
+                    api_call = SESApi().router(_ep, _args)
+                    return api_call
+                except Exception as e:
+                    # If no endpoint has been requested return api_call key verification
+                    return f"ERROR: {escape(e)} for endpoint {_ep} arguments: {_args} \n Returned From "
         except KeyError:
             return "<p><h2>Error No Key Provided With Your Request</h2></p>"

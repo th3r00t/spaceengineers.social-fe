@@ -7,6 +7,8 @@ name = "pypi"
 flask = "*"
 pre-commit = "*"
 requests = "*"
+pymongo = "*"
+python-dotenv = "*"
 
 [dev-packages]
 

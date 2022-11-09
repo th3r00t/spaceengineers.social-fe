@@ -1,3 +1,4 @@
+"""Api Definitions for spaceengineers.social."""
 from datetime import datetime
 from urllib.parse import quote_plus
 
@@ -11,6 +12,7 @@ class DataStream:
     """Establishes connection to MongoDb."""
 
     def __init__(self):
+        """Initialize required settings for database connections."""
         self.config = dotenv_values(".env")
         self.mongo_user = self.config["MONGO_USER"]
         self.mongo_pass = self.config["MONGO_PASS"]
@@ -20,11 +22,11 @@ class DataStream:
         self.db = self.mongo_ctx.sesocial
 
     def mongo_client(self):
-        """Returns mongodb client object"""
+        """Return mongodb client object."""
         return MongoClient(self.mongo_uri)
 
     def mongo_ping(self):
-        """Checks for established connection to mongodb."""
+        """Check for established connection to mongodb."""
         try:
             self.mongo_ctx.admin.command("ping")
             return True
@@ -33,7 +35,7 @@ class DataStream:
 
 
 class SESApi:
-    """Holds all main functions related to api calls
+    """Holds all main functions related to api calls.
 
     Attributes
     ----------
@@ -42,6 +44,7 @@ class SESApi:
     msg_preamle: string
     warn_preamble: string
     error_preamble: string
+
     Methods
     ----------
     router(endpoint, args)
@@ -49,6 +52,7 @@ class SESApi:
     check_args(args, expected)
         checks for required args.
     is_user(args)
+        :noindex:
         internal user check method.
     is_active_user(args)
         Endpoint handler.
@@ -57,6 +61,7 @@ class SESApi:
     """
 
     def __init__(self):
+        """Initialize api specific variables."""
         self.endpoints = {"isUser": self.is_user, "registerUser": self.register_user}
         self.msg_preamble = escape("ses >   ")
         self.warn_preamble = escape("ses !>  ")
@@ -92,7 +97,7 @@ class SESApi:
                 }
 
     def check_args(self, args, expected):
-        """Checks whether the arguments required by the requested endpoint have been provided.
+        """Check whether the arguments required by the requested endpoint have been provided.
 
         Parameters
         ----------
@@ -138,15 +143,15 @@ class SESApi:
                 }
 
     def is_active_user(self, args):
-        """Internal call to check if user is already present.
-        A
-                Parameters
-                ----------
-                args: array, required
-                    {'steam64id': int, 'username': string}
-                Returns
-                ----------
-                bool
+        """Internaly check if user is already present.
+
+        Parameters
+        ----------
+        args: array, required
+            {'steam64id': int, 'username': string}
+        Returns
+        ----------
+        bool
         """
         _db = DataStream().db
         expected = ["steam64id", "username"]
@@ -158,6 +163,7 @@ class SESApi:
 
     def register_user(self, args):
         """Endpoint: registers user by steam64id.
+
         Implements internal is_active_user call
 
         Parameters

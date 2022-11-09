@@ -10,6 +10,9 @@ requests = "*"
 pymongo = "*"
 python-dotenv = "*"
 pudb = "*"
+sphinx = "*"
+pydocstyle = "*"
+myst-parser = "*"
 
 [dev-packages]
 
